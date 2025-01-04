@@ -1,5 +1,6 @@
 import os
 import random
+from sklearn.model_selection import train_test_split
 
 def collect_file_paths(root_dir: str):
     """
@@ -19,7 +20,7 @@ def collect_file_paths(root_dir: str):
             relative_paths.append(full_path)
     return relative_paths
 
-def divide_data(file_paths: list[str], train_ratio: float = 0.8):
+def divide_data(file_paths: list[str], train_test_ratio: float, train_val_ratio: float):
     """
     Divides file paths into training and testing datasets.
     
@@ -30,11 +31,21 @@ def divide_data(file_paths: list[str], train_ratio: float = 0.8):
     Returns:
         tuple[list[str], list[str]]: Training and testing datasets.
     """
-    random.shuffle(file_paths)  # Shuffle the paths randomly
-    train_size = int(len(file_paths) * train_ratio)
-    train_files = file_paths[:train_size]
-    test_files = file_paths[train_size:]
-    return train_files, test_files
+    #random.shuffle(file_paths)  # Shuffle the paths randomly
+    #va cambiata usando safex
+    #train_size = int(len(file_paths) * train_ratio)
+    #train_files = file_paths[:train_size]
+    labels = []
+    for file in file_paths:
+        artist = file.split("\\")[1]
+        labels.append(artist)
+    train_files, test_files = train_test_split(file_paths, train_size=train_test_ratio, stratify=labels)
+    labels = []
+    for file in train_files:
+        artist = file.split("\\")[1]
+        labels.append(artist)
+    train_files, validation_files = train_test_split(train_files, train_size=train_val_ratio, stratify=labels)  # Split the training set into training and validation sets
+    return train_files,validation_files, test_files
 
 def write_to_file(file_list: list[str], output_file: str):
     """
@@ -51,18 +62,22 @@ def write_to_file(file_list: list[str], output_file: str):
 # Example usage
 if __name__ == "__main__":
     root_directory = "artist_dataset"  # Replace with your subtree root path
-    train_file = "train.txt"
-    test_file = "test.txt"
+    train_file = "train_new.txt"
+    validation_file = "validation_new.txt"
+    test_file = "test_new.txt"
     
     # Step 1: Collect file paths
     all_files = collect_file_paths(root_directory)
     
     # Step 2: Divide into train and test datasets
-    train_files, test_files = divide_data(all_files, train_ratio=0.8)
+    train_files,validation_files, test_files = divide_data(all_files, 0.85, 70/85)
     
     # Step 3: Write to output files
     write_to_file(train_files, train_file)
+    write_to_file(validation_files, validation_file)
     write_to_file(test_files, test_file)
 
     print(f"Training data written to {train_file}")
+    print(f"Validation data written to {validation_file}")
     print(f"Testing data written to {test_file}")
+
