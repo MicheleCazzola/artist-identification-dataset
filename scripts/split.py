@@ -31,10 +31,6 @@ def divide_data(file_paths: list[str], train_test_ratio: float, train_val_ratio:
     Returns:
         tuple[list[str], list[str]]: Training and testing datasets.
     """
-    #random.shuffle(file_paths)  # Shuffle the paths randomly
-    #va cambiata usando safex
-    #train_size = int(len(file_paths) * train_ratio)
-    #train_files = file_paths[:train_size]
     labels = []
     for file in file_paths:
         artist = file.split("\\")[1]
@@ -44,7 +40,9 @@ def divide_data(file_paths: list[str], train_test_ratio: float, train_val_ratio:
     for file in train_files:
         artist = file.split("\\")[1]
         labels.append(artist)
-    train_files, validation_files = train_test_split(train_files, train_size=train_val_ratio, stratify=labels)  # Split the training set into training and validation sets
+    
+    # Split the training set into training and validation sets
+    train_files, validation_files = train_test_split(train_files, train_size=train_val_ratio, stratify=labels)
     return train_files,validation_files, test_files
 
 def write_to_file(file_list: list[str], output_file: str):
@@ -59,18 +57,18 @@ def write_to_file(file_list: list[str], output_file: str):
         for file_path in file_list:
             f.write(file_path + "\n")
 
-# Example usage
+
 if __name__ == "__main__":
-    root_directory = "artist_dataset"  # Replace with your subtree root path
-    train_file = "train_new.txt"
-    validation_file = "validation_new.txt"
-    test_file = "test_new.txt"
+    root_directory = "artist_dataset"  # Subtree root path
+    train_file = "train.txt"
+    validation_file = "validation.txt"
+    test_file = "test.txt"
     
     # Step 1: Collect file paths
     all_files = collect_file_paths(root_directory)
     
     # Step 2: Divide into train and test datasets
-    train_files,validation_files, test_files = divide_data(all_files, 0.85, 70/85)
+    train_files, validation_files, test_files = divide_data(all_files, 0.85, 70/85)
     
     # Step 3: Write to output files
     write_to_file(train_files, train_file)
