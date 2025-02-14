@@ -1616,7 +1616,7 @@ artist_dataset\pyotr-konchalovsky\portrait-of-angelina-borisovna-kemenova-1946.j
 artist_dataset\camille-corot\alexina-ledoux.jpg
 artist_dataset\camille-corot\the-halberdsman-1870.jpg
 artist_dataset\john-constable\water-meadows-near-salisbury-1820.jpg
-artist_dataset\edward-burne-jones\not-detected-186714
+artist_dataset\edward-burne-jones\not-detected-186714.jpg
 artist_dataset\orest-kiprensky\portrait-of-zinaida-volkonskaya-1829.jpg
 artist_dataset\ivan-shishkin\wood-shmetsk-near-narva-1888.jpg
 artist_dataset\francesco-guardi\view-of-the-island-of-san-giorgio-in-alga-venice.jpg
