@@ -1791,7 +1791,7 @@ artist_dataset\vincent-van-gogh\state-lottery-office-1882.jpg
 artist_dataset\winslow-homer\croquet-players-1.jpg
 artist_dataset\dante-gabriel-rossetti\the-lady-of-shalott-moxon-tennyson-1857.jpg
 artist_dataset\nicholas-roerich\pen-drawing-in-his-letter-to-v-stasov-1897.jpg
-artist_dataset\caravaggio\not
+artist_dataset\caravaggio\not-detected-205448.jpg
 artist_dataset\edouard-manet\young-woman-reclining-in-spanish-costume-1863.jpg
 artist_dataset\henri-fantin-latour\self-portrait-1861.jpg
 artist_dataset\benjamin-west\the-death-of-nelson-21st-october-1805-1806.jpg
