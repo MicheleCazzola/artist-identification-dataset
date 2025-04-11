@@ -1,15 +1,18 @@
-# Artist identification - dataset
-This repository contains the dataset used in the paper "Artist identification using deep multi-branch neural network".
+# Artist Identification - Dataset
+This repository contains the dataset used in the competition `artist-identification` ("BYU AI Association. [Artist Identification](https://kaggle.com/competitions/artist-identification). 2024. Kaggle.").
 
 ## Authors
 - [Michele Cazzola](https://github.com/MicheleCazzola)
 - [Giuseppe Arbore](https://github.com/GiuseppeArbore)
 
 ## Dataset
-The dataset contains 25180 RGB images and it is split in [artist dataset](./artist_dataset/) that contains 21,220 images and [ kaggle dataset](./kaggle_testset/) that contains 3960 images. 
+The dataset contains 25180 RGB images and it is divided in [artist dataset](./artist_dataset/) that contains 21,220 images, grouped by author, and [kaggle dataset](./kaggle_testset/) containing 3960 images, without any information regarding the author and used as benchmark for the submissions to the competition.
 
 ## Split
-The dataset is split in [training](./train.txt), [validation](./val.txt) and [test](./test.txt) set. The training set contains 14854 images, the validation set contains 3183 images and the test set contains 3183 images.
+The labeled dataset is split in:
+- [training set](./train.txt): 14854 images
+- [validation set](./val.txt): 3183 images
+- [test set](./test.txt): 3183 images.
 
 ## Scripts
 The [scripts](./scripts/) folder contains the scripts used to :
